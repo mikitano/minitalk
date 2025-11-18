@@ -27,8 +27,23 @@ static void	ft_ack_on(int signal)
 
 static void	ft_send_bit_to_server(pid_t pid, unsigned char c)
 {
-	(void)pid;
-	(void)c;
+	int	bit;
+	int	bit_index;
+
+	bit = 0;
+	bit_index = 0;
+	while (bit_index < 8)
+	{
+		bit = (c >> bit_index) & 1
+		g_ack = 0;
+		if (bit)
+			kill(pid, SIGUSR2);
+		else
+			kill(pid, SIGUSR1);
+		while (g_ack == 0)
+			pause();
+		bit_index++;
+	}
 }
 
 int	main(int ac, char **av)
