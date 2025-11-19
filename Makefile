@@ -6,7 +6,7 @@
 #    By: mkitano <mkitano@student.42sp.org.br>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/11/09 18:15:28 by mkitano           #+#    #+#              #
-#    Updated: 2025/11/18 18:15:45 by mkitano          ###   ########.fr        #
+#    Updated: 2025/11/18 22:02:52 by mkitano          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,6 +14,7 @@ CLIENT = client
 SERVER = server
 EXEC_C = $(BIN_DIR)/$(CLIENT)
 EXEC_S = $(BIN_DIR)/$(SERVER)
+NAME = $(EXEC_C) $(EXEC_S)
 
 BONUS_CLIENT = client_bonus
 BONUS_SERVER = server_bonus
@@ -59,7 +60,7 @@ LDFLAGS = -L $(LIBFT_DIR) -lft
 RM = rm
 RMFLAGS = -rf
 
-all: $(EXEC_C) $(EXEC_S)
+all: $(NAME)
 
 bonus: $(EXEC_BC) $(EXEC_BS)
 
