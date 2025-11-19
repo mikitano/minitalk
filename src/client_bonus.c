@@ -6,7 +6,7 @@
 /*   By: mkitano <mkitano@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/15 11:27:58 by mkitano           #+#    #+#             */
-/*   Updated: 2025/11/18 18:21:39 by mkitano          ###   ########.fr       */
+/*   Updated: 2025/11/18 21:47:26 by mkitano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static void	ft_ack_on(int signal)
 	else if (signal == SIGUSR2)
 	{
 		ft_putstr_fd("Message received!\n", 1);
-		exit (0);
+		exit(0);
 	}
 }
 
@@ -66,8 +66,9 @@ int	main(int ac, char **av)
 	sigemptyset(&ssig.sa_mask);
 	ssig.sa_flags = 0;
 	ssig.sa_handler = ft_ack_on;
-	sigaction(SIGUSR1, &ssig, NULL);
-	sigaction(SIGUSR2, &ssig, NULL);
+	if ((sigaction(SIGUSR1, &ssig, NULL) == -1) || (sigaction(SIGUSR2, &ssig,
+				NULL) == -1))
+		return (1);
 	i = 0;
 	while (1)
 	{
